@@ -85,3 +85,53 @@ mostrarInventario();
 simularDiaDeVentas();   // Simula 5 clientes comprando
 diagnosticoInventario(); // Verifica salud del inventario
 
+// Fase 4
+
+// --- 1. Función principal con menú ---
+function iniciarGestion() {
+    while (true) {
+        let opcion = prompt(
+`Menú de Inventario:
+1 - Registrar Venta
+2 - Reponer Stock
+3 - Simular Día de Ventas
+4 - Ver Diagnóstico de Inventario
+5 - Mostrar Inventario Actual
+6 - Cerrar programa`
+        );
+
+        switch (opcion) {
+            case "1":
+                let cantidadVenta = parseInt(prompt("Ingrese la cantidad a vender:"));
+                registrarVenta(cantidadVenta);
+                break;
+
+            case "2":
+                let cantidadReponer = parseInt(prompt("Ingrese la cantidad a reponer:"));
+                reponerStock(cantidadReponer);
+                break;
+
+            case "3":
+                simularDiaDeVentas();
+                break;
+
+            case "4":
+                diagnosticoInventario();
+                break;
+
+            case "5":
+                mostrarInventario();
+                break;
+
+            case "6":
+                console.log("👋 Programa cerrado.");
+                return; // rompe el ciclo y finaliza la función
+
+            default:
+                console.log("⚠️ Opción inválida. Intente nuevamente.");
+        }
+    }
+}
+
+// --- Iniciar el programa ---
+iniciarGestion();
