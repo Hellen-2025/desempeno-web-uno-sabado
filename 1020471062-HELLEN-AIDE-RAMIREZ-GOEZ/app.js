@@ -40,3 +40,48 @@ registrarVenta(40);   // Stock insuficiente
 
 console.log("=== Reponer stock ===");
 reponerStock(30);     // Añadir stock
+
+// Fase 3: Lógica de Simulación y Diagnóstico//
+
+// --- 1. Simular día de ventas ---
+const simularDiaDeVentas = () => {
+    console.log("=== Simulación de un día de ventas ===");
+    for (let i = 1; i <= 5; i++) {
+        console.log(` Cliente ${i}:`);
+        registrarVenta(8); // cada cliente compra 8 unidades
+    }
+};
+
+// --- 2. Diagnóstico del inventario ---
+function diagnosticoInventario() {
+    console.log("=== Diagnóstico del Inventario ===");
+
+    // --- Condicional múltiple (estado del stock) ---
+    if (stockProducto > 40) {
+        console.log("Nivel de stock óptimo.");
+    } else if (stockProducto > 20) {
+        console.log(" Stock moderado, considera reponer pronto.");
+    } else {
+        console.log(" ¡Alerta! Bajo stock, reposición urgente.");
+    }
+
+    // --- Switch (ventas totales) ---
+    switch (true) {
+        case (ventasTotales > 40):
+            console.log(" Producto estrella, alta demanda.");
+            break;
+        case (ventasTotales > 20):
+            console.log(" Ventas moderadas.");
+            break;
+        default:
+            console.log(" Baja rotación del producto.");
+    }
+}
+
+// --- Pruebas ---
+console.log("=== Estado inicial ===");
+mostrarInventario();
+
+simularDiaDeVentas();   // Simula 5 clientes comprando
+diagnosticoInventario(); // Verifica salud del inventario
+
